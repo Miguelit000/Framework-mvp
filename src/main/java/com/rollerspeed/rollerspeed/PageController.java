@@ -1,33 +1,25 @@
 package com.rollerspeed.rollerspeed;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import com.rollerspeed.rollerspeed.models.User;
 import com.rollerspeed.rollerspeed.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
 
-    private final RollerspeedApplication rollerspeedApplication;
-
-    private final UserService userService;
-
-    PageController(UserService userService, RollerspeedApplication rollerspeedApplication) {
-        this.userService = userService;
-        this.rollerspeedApplication = rollerspeedApplication;
-    }
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String home() {
         return "index";
-    } 
+    }
 
     @GetMapping("/mision")
     public String mision() {
@@ -39,7 +31,7 @@ public class PageController {
         return "vision";
     }
 
-    @GetMapping("/valores") 
+    @GetMapping("/valores")
     public String valores() {
         return "valores";
     }
@@ -52,6 +44,11 @@ public class PageController {
     @GetMapping("/eventos")
     public String eventos() {
         return "eventos";
+    }
+
+    @GetMapping("/bienvenida")
+    public String bienvenida() {
+        return "bienvenida";
     }
 
     // Metodo para mostrar el formulario de registro
@@ -74,13 +71,17 @@ public class PageController {
         return "login";
     }
 
-    // Metodo para procesar el incio de sesion (simulado)
+    // Metodo para procesar el incio de sesion
     @PostMapping("/login")
-    public String processLogin() {
-        // En este paso, simplemente redirigimos.
-        //Despues, agregamos la logica real de la validacion de usuario
-        return "redirect:/";
+    public String processLogin(@RequestParam String username, @RequestParam String password) {
+        User user = userService.findByUsernameAndPassword(username, password);
+
+        if (user != null) {
+            // Si el usuario existe, redirige a una pagina de bienvenida
+            return "redirect:/bienvenida";
+        } else {
+            // Si el usuario no existe, regresa a la pagina de login con error
+            return "redirect:/login?error=true";
+        }
     }
-        
-    
 }
