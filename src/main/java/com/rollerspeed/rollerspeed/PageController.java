@@ -61,7 +61,7 @@ public class PageController {
     // Metodo para procesar el formulario de registro
     @PostMapping("/registro")
     public String processRegistration(@ModelAttribute User user) {
-        userService.savUser(user);
+        userService.saveUser(user);
         return "redirect:/";
     }
 
