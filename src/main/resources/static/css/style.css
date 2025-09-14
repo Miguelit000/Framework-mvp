@@ -1,0 +1,19 @@
+.nav {
+    background-color: #ffffff !important;
+    color : #000000;
+
+}
+.bg-warning {
+    background-color: #fafafa !important;
+    color : #000000 !important;
+    font-weight: 500 !important;
+}
+.btn  {
+    background-color: #e56322;
+    color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #fd782a !important;
+    color: #ffffff;
+}
