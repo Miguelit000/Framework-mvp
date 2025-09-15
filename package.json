@@ -1,0 +1,11 @@
+{
+"name": "rollerspeed",
+"version": "1.0.0",
+"private": true,
+"scripts": {
+    "sass": "sass src/main/resources/scss:src/main/resources/static/css"
+},
+"devDependencies": {
+    "sass": "^1.77.0"
+}
+}
