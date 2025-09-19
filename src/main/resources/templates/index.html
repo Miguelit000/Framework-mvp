@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rollerspeed - Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" href="/images/logo.png" type="image/png">
     <style>
-        /* Estilos CSS personalizados */
-        
         .hero-section h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
     </style>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="" alt="Rollerspeed Logo" width="30" height="24" class="d-inline-block align-text-top">
-                Rollerspeed
-            </a>
+            <a class="navbar-brand" href="index.html">
+    <img src="/images/logo.png" alt="Logo de Rollerspeed" class="login-logo img-fluid" style="max-width: 80px;">
+</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -75,66 +76,94 @@
                 </ul>
 
                 <div class="d-flex">
-                    <a href="/login" class="btn btn-dark me-2">Iniciar Sesión</a>
-                    <a href="/registrarse" class="btn btn-outline-dark">Registrarse</a>
+                    <a href="/login" class="btn btn-dark me-2">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión o Registrarse
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
     
-    <main>
-        <section class="container-fluid hero-section">
-            <h1 class="display-4">¡Bienvenido a Rollerspeed!</h1>
-            <p class="lead">Tu escuela de patinaje, donde la velocidad y la diversión se encuentran.</p>
-            <hr class="my-4">
-            <p>Descubre nuestros servicios, eventos y regístrate para ser parte de nuestra comunidad.</p>
-            <a class="btn btn-warning btn-lg" href="/inscripcion-estudiantes" role="button">Inscríbete ahora!!!</a>
+    <main class="mt-5 pt-4">
+        <!-- HERO -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container text-center">
+                <h1 class="display-4 fw-bold">Bienvenido a <span class="text-warning">Roller Speed</span></h1>
+                <p class="lead text-muted mb-4">La escuela de patinaje líder en Santa Marta, Colombia. Desarrollo de velocidad, técnica y pasión por el patinaje.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a class="btn btn-warning btn-lg" href="/inscripcion-estudiantes" role="button"><i class="bi bi-lightning-charge-fill me-1"></i> Inscríbete Ahora</a>
+                    <a class="btn btn-outline-secondary btn-lg" href="/conoce" role="button"><i class="bi bi-info-circle me-1"></i> Conoce Más</a>
+                </div>
+            </div>
         </section>
 
-        <section class="features-section">
+        <!-- FEATURES -->
+        <section class="features-section py-5">
             <div class="container">
-                <div class="row text-center mb-5">
-                    <div class="col-md-8 mx-auto">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-8 text-center">
                         <h2 class="fw-bold">¿Por qué elegir Roller Speed?</h2>
                         <p class="lead text-muted">Ofrecemos la mejor experiencia de aprendizaje con instructores certificados y instalaciones de primera clase.</p>
                     </div>
                 </div>
+
                 <div class="row g-4">
-                    <div class="col-lg-6">
-                        <div class="feature-card p-4 text-center h-100">
-                            <div class="feature-icon mb-3"><i class="bi bi-people-fill"></i></div>
-                            <h5 class="fw-bold">Instructores Expertos</h5>
-                            <p class="text-muted">Equipo de instructores certificados con años de experiencia en competencias nacionales e internacionales.</p>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm rounded-3">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="bi bi-people-fill fs-1 text-warning"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Instructores Expertos</h5>
+                                <p class="card-text text-muted small">Equipo de instructores certificados con años de experiencia en competencias nacionales e internacionales.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="feature-card p-4 text-center h-100">
-                            <div class="feature-icon mb-3"><i class="bi bi-gear-wide-connected"></i></div>
-                            <h5 class="fw-bold">Técnica Avanzada</h5>
-                            <p class="text-muted">Metodología probada que desarrolla velocidad, resistencia y técnica de patinaje de forma progresiva.</p>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm rounded-3">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="bi bi-gear-wide-connected fs-1 text-warning"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Técnica Avanzada</h5>
+                                <p class="card-text text-muted small">Metodología probada que desarrolla velocidad, resistencia y técnica de patinaje de forma progresiva.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="feature-card p-4 text-center h-100">
-                            <div class="feature-icon mb-3"><i class="bi bi-trophy-fill"></i></div>
-                            <h5 class="fw-bold">Preparación Competitiva</h5>
-                            <p class="text-muted">Entrenamiento especializado para competencias locales, nacionales e internacionales de patinaje.</p>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm rounded-3">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="bi bi-trophy-fill fs-1 text-warning"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Preparación Competitiva</h5>
+                                <p class="card-text text-muted small">Entrenamiento especializado para competencias locales, nacionales e internacionales de patinaje.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="feature-card p-4 text-center h-100">
-                            <div class="feature-icon mb-3"><i class="bi bi-clock-fill"></i></div>
-                            <h5 class="fw-bold">Horarios Flexibles</h5>
-                            <p class="text-muted">Múltiples horarios disponibles para adaptarse a tu rutina diaria y necesidades específicas.</p>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm rounded-3">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="bi bi-clock-fill fs-1 text-warning"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Horarios Flexibles</h5>
+                                <p class="card-text text-muted small">Múltiples horarios disponibles para adaptarse a tu rutina diaria y necesidades específicas.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <!-- FOOTER -->
     <footer class="bg-dark text-white pt-5 pb-4">
         <div class="container">
             <div class="row">
@@ -146,65 +175,38 @@
             <div class="row py-4">
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <a href="#" class="d-inline-block mb-3 text-decoration-none">
-                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1">rollerspeed</span>
+                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> rollerspeed</span>
                     </a>
                     <p class="text-secondary">© 2025</p>
                 </div>
 
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white">Rollerspeed</h6>
+                    <h6 class="text-white"><i class="bi bi-grid me-1"></i> Rollerspeed</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">Home</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">Features</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">Pricing</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">FAQs</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">About</a>
-                        </li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-stars me-1"></i> Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-cash-coin me-1"></i> Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-question-circle me-1"></i> FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-info-circle me-1"></i> About</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white">Siguenos</h6>
+                    <h6 class="text-white"><i class="bi bi-share me-1"></i> Síguenos</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">rollerspeed@example.com</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">Facebook</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">Instagram</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">rollerspeed.com</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none"></a>
-                        </li>
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-fill me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-globe2 me-1"></i> rollerspeed.com</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white">contatanos</h6>
+                    <h6 class="text-white"><i class="bi bi-telephone-forward me-1"></i> Contáctanos</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">rollerspeed@example.com</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">tel: 300-000-0000</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-secondary text-decoration-none">visitanos en nuestra oficina #123</a>
-                        </li>
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-at me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="tel:+573000000000" class="text-secondary text-decoration-none"><i class="bi bi-phone me-1"></i> 300-000-0000</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-geo-alt me-1"></i> Visítanos en nuestra oficina #123</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,11 +1,145 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <tittle>Bienvenida</tittle>
-    </head>
-    <body>
-        <h1>¡Bienvenido a RollerSpeed!</h1>
-        <p>Has iniciado sesion correctamente</p>
-    </body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Roller Speed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 80px; 
+            background-color: #f8f9fa; 
+        }
+        .welcome-icon {
+            font-size: 4rem;
+            color: #198754; 
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/images/logo.png" alt="Logo de Rollerspeed" class="img-fluid" style="max-width: 80px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Valores Corporativos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/mision">Misión</a></li>
+                            <li><a class="dropdown-item" href="/vision">Visión</a></li>
+                            <li><a class="dropdown-item" href="/valores">Valores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/eventos">Eventos de la escuela</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Registro
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/inscripcion-estudiantes">Inscripción de Estudiantes</a></li>
+                            <li><a class="dropdown-item" href="/inscripcion-instructor">Inscripción de Instructor</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Clases
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Estudiantes</li>
+                            <li><a class="dropdown-item" href="/listar-estudiantes">Listar Estudiantes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Calendario u Horario
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/calendario-estudiantes">Estudiantes</a></li>
+                            <li><a class="dropdown-item" href="/calendario-instructor">Instructor</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm text-center p-4 p-md-5">
+                    <div class="mb-3">
+                        <i class="bi bi-check-circle-fill welcome-icon"></i>
+                    </div>
+                    <h1 class="display-5 fw-bold">¡Bienvenido a Roller Speed!</h1>
+                    <p class="lead text-muted">Has iniciado sesión correctamente.</p>
+                    <hr class="my-4">
+                    <p>Ahora puedes acceder a todas las funciones de tu cuenta.</p>
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <a href="/" class="btn btn-warning btn-lg">Ir al Panel principal</a>
+                        <a href="/servicios" class="btn btn-outline-secondary btn-lg">Explorar Servicios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <hr class="border-secondary">
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <a href="#" class="d-inline-block mb-3 text-decoration-none">
+                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> rollerspeed</span>
+                    </a>
+                    <p class="text-secondary">© 2025</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-grid me-1"></i> Rollerspeed</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="/" class="text-secondary text-decoration-none"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-stars me-1"></i> Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-cash-coin me-1"></i> Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-share me-1"></i> Síguenos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-telephone-forward me-1"></i> Contáctanos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-at me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="tel:+573000000000" class="text-secondary text-decoration-none"><i class="bi bi-phone me-1"></i> 300-000-0000</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

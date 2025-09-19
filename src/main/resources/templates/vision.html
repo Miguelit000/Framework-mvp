@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rollerspeed - Inicio</title>
+    <title>Nuestra Visión - Roller Speed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
     <style>
-        /* Estilos CSS personalizados */
-        
-        .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Agrega un padding superior para que el contenido no quede debajo del navbar fijo */
+            padding-top: 80px; 
+            background-color: #f8f9fa; /* Un color de fondo suave */
+        }
+        .icon-main {
+            font-size: 3.5rem;
+            color: #ffc107; /* Amarillo, igual que el navbar */
+        }
+        .text-orange {
+            color: #ffc107 !important;
         }
     </style>
 </head>
 <body>
-    
-        <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="" alt="Rollerspeed Logo" width="30" height="24" class="d-inline-block align-text-top">
-                Rollerspeed
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/images/logo.png" alt="Logo de Rollerspeed" class="img-fluid" style="max-width: 80px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -45,7 +51,8 @@
                         <a class="nav-link" href="/servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/eventos">Eventos de la escuela</a></li>
+                        <a class="nav-link" href="/eventos">Eventos de la escuela</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Registro
@@ -74,142 +81,109 @@
                         </ul>
                     </li>
                 </ul>
-
                 <div class="d-flex">
-                    <a href="/login" class="btn btn-dark me-2">Iniciar Sesión</a>
-                    <a href="/registrarse" class="btn btn-outline-dark">Registrarse</a>
+                    <a href="/login" class="btn btn-dark me-2">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión o Registrarse
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="container">
-    <section class="intro">
-      <div class="icon">👁️</div>
-      <h1>Nuestra Visión</h1>
-      <p class="sub">El futuro que construimos juntos</p>
-    </section>
+    <main class="container py-5">
+        <div class="text-center">
+            <i class="bi bi-eye icon-main"></i>
+            <h2 class="fw-bold mt-2">Nuestra Visión</h2>
+            <p class="text-muted">El futuro que construimos juntos</p>
 
-    <section class="card">
-      <h2>Visión de Roller Speed</h2>
-      <p>
-        Ser reconocidos como la escuela de patinaje líder en Colombia y referente en Latinoamérica,
-        destacándonos por la formación de patinadores de alto rendimiento y por contribuir
-        significativamente al desarrollo del patinaje de velocidad en la región. Aspiramos a ser un
-        centro de excelencia deportiva que inspire a las futuras generaciones y posicione a Santa Marta
-        como una potencia en el patinaje nacional e internacional.
-      </p>
-    </section>
+            <div class="card shadow-sm p-4 mt-4">
+                <h5 class="fw-semibold">Visión de Roller Speed</h5>
+                <p class="mt-3">
+                    Ser reconocidos como la escuela de patinaje líder en Colombia y referente en Latinoamérica, 
+                    destacándonos por la formación de patinadores de alto rendimiento y contribuyendo al desarrollo del patinaje de velocidad en la región. 
+                    Aspiramos a ser un centro de excelencia que inspire a las futuras generaciones y posicione a Santa Marta como una potencia nacional e internacional.
+                </p>
+            </div>
 
-    <section class="features">
-      <div class="feature">
-        🏆 <h3>Liderazgo Nacional</h3>
-        <p>Convertirnos en la escuela de patinaje más reconocida de Colombia, formando campeones nacionales e internacionales.</p>
-      </div>
-      <div class="feature">
-        🌍 <h3>Proyección Internacional</h3>
-        <p>Ser referente en Latinoamérica, estableciendo alianzas estratégicas con escuelas internacionales de patinaje.</p>
-      </div>
-      <div class="feature">
-        🤝 <h3>Impacto Social</h3>
-        <p>Inspirar a las futuras generaciones y contribuir al desarrollo deportivo y social de nuestra comunidad.</p>
-      </div>
-    </section>
+            <div class="row mt-4 g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm p-4 h-100 text-center">
+                        <i class="bi bi-trophy text-orange fs-2"></i>
+                        <h5 class="mt-3 fw-bold">Liderazgo Nacional</h5>
+                        <p class="text-muted">Convertirnos en la escuela más reconocida de Colombia, formando campeones nacionales e internacionales.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm p-4 h-100 text-center">
+                        <i class="bi bi-globe text-orange fs-2"></i>
+                        <h5 class="mt-3 fw-bold">Proyección Internacional</h5>
+                        <p class="text-muted">Ser referente en Latinoamérica, estableciendo alianzas estratégicas que fortalezcan el crecimiento del patinaje.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm p-4 h-100 text-center">
+                        <i class="bi bi-people text-orange fs-2"></i>
+                        <h5 class="mt-3 fw-bold">Impacto Social</h5>
+                        <p class="text-muted">Inspirar a futuras generaciones, contribuyendo al desarrollo deportivo y social de nuestra comunidad.</p>
+                    </div>
+                </div>
+            </div>
 
-    <section class="highlight">
-      <h2>Construyendo el Futuro del Patinaje</h2>
-      <p>
-        Nuestra visión nos impulsa a innovar constantemente, a buscar la excelencia en cada
-        entrenamiento y a formar no solo grandes patinadores, sino también grandes personas que
-        lleven el nombre de Roller Speed y Santa Marta por todo el mundo.
-      </p>
-    </section>
-  </main>
-</body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuestra Visión - Roller Speed</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold text-orange" href="index.html">⚡ Roller Speed</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="mision.html">Misión</a></li>
-          <li class="nav-item"><a class="nav-link active" href="vision.html">Visión</a></li>
-          <li class="nav-item"><a class="btn btn-orange ms-2" href="#">Inscríbete</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- VISIÓN -->
-  <section class="py-5 mt-5">
-    <div class="container text-center">
-      <i class="bi bi-eye icon-main"></i>
-      <h2 class="fw-bold mt-2">Nuestra Visión</h2>
-      <p class="text-muted">El futuro que construimos juntos</p>
-
-      <div class="card shadow-sm p-4 mt-4">
-        <h5 class="fw-semibold">Visión de Roller Speed</h5>
-        <p class="mt-3">
-          Ser reconocidos como la escuela de patinaje líder en Colombia y referente en Latinoamérica, 
-          destacándonos por la formación de patinadores de alto rendimiento y contribuyendo al desarrollo del patinaje de velocidad en la región. 
-          Aspiramos a ser un centro de excelencia que inspire a las futuras generaciones y posicione a Santa Marta como una potencia nacional e internacional.
-        </p>
-      </div>
-
-      <div class="row mt-4 g-3">
-        <div class="col-md-4">
-          <div class="card shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-trophy text-orange fs-2"></i>
-            <h5 class="mt-3">Liderazgo Nacional</h5>
-            <p class="text-muted">Convertirnos en la escuela de patinaje más reconocida de Colombia, formando campeones nacionales e internacionales.</p>
-          </div>
+            <div class="card shadow-sm p-4 mt-4">
+                <h5 class="fw-semibold">Construyendo el Futuro del Patinaje</h5>
+                <p class="mt-3">
+                    Nuestra visión nos impulsa a innovar constantemente, buscando la excelencia en cada entrenamiento. 
+                    Queremos formar no solo grandes patinadores, sino también grandes personas que lleven el nombre de Roller Speed y Santa Marta por el mundo.
+                </p>
+            </div>
         </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-globe text-orange fs-2"></i>
-            <h5 class="mt-3">Proyección Internacional</h5>
-            <p class="text-muted">Ser referente en Latinoamérica, estableciendo alianzas estratégicas que fortalezcan el crecimiento del patinaje.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-people text-orange fs-2"></i>
-            <h5 class="mt-3">Impacto Social</h5>
-            <p class="text-muted">Inspirar a futuras generaciones, contribuyendo al desarrollo deportivo y social de nuestra comunidad.</p>
-          </div>
-        </div>
-      </div>
+    </main>
 
-      <div class="card shadow-sm p-4 mt-4">
-        <h5 class="fw-semibold">Construyendo el Futuro del Patinaje</h5>
-        <p class="mt-3">
-          Nuestra visión nos impulsa a innovar constantemente, buscando la excelencia en cada entrenamiento. 
-          Queremos formar no solo grandes patinadores, sino también grandes personas que lleven el nombre de Roller Speed y Santa Marta por el mundo.
-        </p>
-      </div>
-    </div>
-  </section>
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <hr class="border-secondary">
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <a href="#" class="d-inline-block mb-3 text-decoration-none">
+                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> rollerspeed</span>
+                    </a>
+                    <p class="text-secondary">© 2025</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-grid me-1"></i> Rollerspeed</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="/" class="text-secondary text-decoration-none"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-stars me-1"></i> Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-cash-coin me-1"></i> Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-question-circle me-1"></i> FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-info-circle me-1"></i> About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-share me-1"></i> Síguenos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-fill me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-globe2 me-1"></i> rollerspeed.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-telephone-forward me-1"></i> Contáctanos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-at me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="tel:+573000000000" class="text-secondary text-decoration-none"><i class="bi bi-phone me-1"></i> 300-000-0000</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-geo-alt me-1"></i> Visítanos en nuestra oficina #123</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

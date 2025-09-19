@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rollerspeed - Inicio</title>
+    <title>Nuestra Misión - Roller Speed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
     <style>
-        /* Estilos CSS personalizados */
-        
-        .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 80px; 
+            background-color: #f8f9fa;
+        }
+        .icon-main {
+            font-size: 3.5rem;
+            color: #ffc107;
+        }
+        .text-orange {
+            color: #ffc107 !important;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="" alt="Rollerspeed Logo" width="30" height="24" class="d-inline-block align-text-top">
-                Rollerspeed
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/images/logo.png" alt="Logo de Rollerspeed" class="img-fluid" style="max-width: 80px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -44,7 +50,8 @@
                         <a class="nav-link" href="/servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/eventos">Eventos de la escuela</a></li>
+                        <a class="nav-link" href="/eventos">Eventos de la escuela</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Registro
@@ -73,59 +80,93 @@
                         </ul>
                     </li>
                 </ul>
-
                 <div class="d-flex">
-                    <a href="/login" class="btn btn-dark me-2">Iniciar Sesión</a>
-                    <a href="/registrarse" class="btn btn-outline-dark">Registrarse</a>
+                    <a href="/login" class="btn btn-dark me-2">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión o Registrarse
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-  <!-- MISIÓN -->
-  <section class="py-5 mt-5">
-    <div class="container text-center">
-      <i class="bi bi-bullseye icon-main"></i>
-      <h2 class="fw-bold mt-2">Nuestra Misión</h2>
-      <p class="text-muted">El propósito que nos impulsa cada día</p>
+    <main class="container py-5">
+        <section id="mision" class="text-center">
+            <i class="bi bi-bullseye icon-main"></i>
+            <h2 class="fw-bold mt-2">Nuestra Misión</h2>
+            <p class="text-muted">El propósito que nos impulsa cada día</p>
+            <div class="card shadow-sm p-4 mt-4">
+                <h5 class="fw-semibold">Misión de Roller Speed</h5>
+                <p class="mt-3">
+                    En Roller Speed, nuestra misión es formar patinadores integrales a través de una metodología innovadora y personalizada, 
+                    promoviendo valores como la disciplina, el respeto, la perseverancia y el trabajo en equipo. 
+                    Nos comprometemos a brindar un ambiente seguro y profesional donde cada estudiante pueda desarrollar su máximo potencial, 
+                    fomentando el amor por el patinaje y contribuyendo al crecimiento del deporte en Santa Marta y la región Caribe.
+                </p>
+            </div>
+            <div class="row mt-4 g-3">
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-4 h-100 text-center">
+                        <i class="bi bi-heart text-orange fs-2"></i>
+                        <h5 class="mt-3 fw-bold">Compromiso con la Excelencia</h5>
+                        <p class="text-muted">Ofrecemos enseñanza del patinaje con instructores certificados y metodologías probadas que garantizan el progreso continuo.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-4 h-100 text-center">
+                        <i class="bi bi-star text-orange fs-2"></i>
+                        <h5 class="mt-3 fw-bold">Desarrollo Integral</h5>
+                        <p class="text-muted">Formamos personas íntegras, inculcando valores fundamentales que trascienden el deporte y aportan al crecimiento personal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      <div class="card shadow-sm p-4 mt-4">
-        <h5 class="fw-semibold">Misión de Roller Speed</h5>
-        <p class="mt-3">
-          En Roller Speed, nuestra misión es formar patinadores integrales a través de una metodología innovadora y personalizada, 
-          promoviendo valores como la disciplina, el respeto, la perseverancia y el trabajo en equipo. 
-          Nos comprometemos a brindar un ambiente seguro y profesional donde cada estudiante pueda desarrollar su máximo potencial, 
-          fomentando el amor por el patinaje y contribuyendo al crecimiento del deporte en Santa Marta y la región Caribe.
-        </p>
-      </div>
-
-      <div class="row mt-4 g-3">
-        <div class="col-md-6">
-          <div class="card shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-heart text-orange fs-2"></i>
-            <h5 class="mt-3">Compromiso con la Excelencia</h5>
-            <p class="text-muted">Ofrecemos enseñanza del patinaje con instructores certificados y metodologías probadas que garantizan el progreso continuo.</p>
-          </div>
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <hr class="border-secondary">
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <a href="#" class="d-inline-block mb-3 text-decoration-none">
+                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> rollerspeed</span>
+                    </a>
+                    <p class="text-secondary">© 2025</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-grid me-1"></i> Rollerspeed</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="/" class="text-secondary text-decoration-none"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-stars me-1"></i> Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-cash-coin me-1"></i> Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-question-circle me-1"></i> FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-info-circle me-1"></i> About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-share me-1"></i> Síguenos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-fill me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-globe2 me-1"></i> rollerspeed.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-white"><i class="bi bi-telephone-forward me-1"></i> Contáctanos</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-at me-1"></i> rollerspeed@example.com</a></li>
+                        <li class="mb-2"><a href="tel:+573000000000" class="text-secondary text-decoration-none"><i class="bi bi-phone me-1"></i> 300-000-0000</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-geo-alt me-1"></i> Visítanos en nuestra oficina #123</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-star text-orange fs-2"></i>
-            <h5 class="mt-3">Desarrollo Integral</h5>
-            <p class="text-muted">Formamos personas íntegras, inculcando valores fundamentales que trascienden el deporte y aportan al crecimiento personal.</p>
-          </div>
-        </div>
-      </div>
+    </footer>
 
-      <div class="card shadow-sm p-4 mt-4">
-        <h5 class="fw-semibold">Nuestro Compromiso Contigo</h5>
-        <p class="mt-3">
-          Cada día trabajamos para hacer realidad nuestra misión, creando un espacio donde la pasión por el patinaje se combina 
-          con la excelencia educativa y el desarrollo humano.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

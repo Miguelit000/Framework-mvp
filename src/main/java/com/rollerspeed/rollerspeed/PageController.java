@@ -36,11 +36,6 @@ public class PageController {
         return "valores";
     }
 
-    @GetMapping("/servicios")
-    public String servicios() {
-        return "servicios";
-    }
-
     @GetMapping("/eventos")
     public String eventos() {
         return "eventos";
@@ -49,6 +44,11 @@ public class PageController {
     @GetMapping("/bienvenida")
     public String bienvenida() {
         return "bienvenida";
+    }
+
+    @GetMapping("/conocenos")
+    public String conocenos() {
+        return "conocenos";
     }
 
     // Metodo para mostrar el formulario de registro
