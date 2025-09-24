@@ -28,7 +28,6 @@ public class PageController {
     private RolRepository rolRepository;
 
 
-    // ... (los otros métodos como home(), mision(), etc. se quedan igual)
     @GetMapping("/")
     public String home() {
         return "index";
@@ -65,35 +64,29 @@ public class PageController {
     }
     
 
-    // 2. Modificamos el método para MOSTRAR el formulario
+
     @GetMapping("/registro")
     public String showRegistrationForm(Model model) {
-        // Ahora creamos un Alumno que ya tiene un User adentro
         Alumno alumno = new Alumno();
         alumno.setUser(new User()); 
         model.addAttribute("alumno", alumno);
         return "registro";
     }
 
-    // 3. Modificamos el método para PROCESAR el formulario
     @PostMapping("/registro")
     public String processRegistration(@ModelAttribute Alumno alumno) {
         
-        // Ciframos la contraseña
         String contraseñaCifrada = passwordEncoder.encode(alumno.getUser().getPassword());
         alumno.getUser().setPassword(contraseñaCifrada);
 
-        // Asignamos el rol de "ALUMNO" por defecto
         Rol rolAlumno = rolRepository.findByNombre("ROLE_ALUMNO");
         alumno.getUser().setRol(rolAlumno);
         
-        // Guardamos el alumno (que a su vez guarda el usuario con la contraseña cifrada y el rol)
         alumnoRepository.save(alumno);
 
         return "redirect:/login";
     }
 
-    // El método de login se queda igual por ahora
     @GetMapping("/login")
     public String showLoginPage() {
         return "login";

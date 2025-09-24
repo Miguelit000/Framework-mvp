@@ -16,11 +16,9 @@ public class ServicioController {
 
     @GetMapping("/servicios")
     public String listarServicios(Model model) {
-        // Añade la lista de servicios activos al modelo para que la vista pueda usarla
+
         model.addAttribute("servicios", servicioService.findActiveServices());
-        return "servicios"; // Llama al archivo servicios.html
+        return "servicios";
     }
 
-    // Aquí irían otros métodos para ver detalles de un servicio, crear uno nuevo, etc.
-    // Por ejemplo: @GetMapping("/servicios/{id}")
 }

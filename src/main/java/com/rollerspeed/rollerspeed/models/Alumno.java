@@ -9,7 +9,7 @@ public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alumno") // El nombre de la columna en la BD
+    @Column(name = "id_alumno") 
     private Long idAlumno;
 
     @Column(nullable = false, length = 100)
@@ -24,10 +24,8 @@ public class Alumno {
     @Column(length = 20)
     private String telefono;
     
-    // Relación con Usuario
-    // Un Alumno tiene una cuenta de Usuario.
-    @OneToOne(cascade = CascadeType.ALL) // Si borramos un alumno, también se borra su usuario.
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id") // Así se conectan las tablas.
+    @OneToOne(cascade = CascadeType.ALL) 
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id") 
     private User user;
 
 

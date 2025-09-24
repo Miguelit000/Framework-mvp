@@ -3,7 +3,7 @@ package com.rollerspeed.rollerspeed.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "instructores") // Corresponde a la tabla "instructores"
+@Table(name = "instructores") 
 public class Instructor {
 
     @Id
@@ -17,8 +17,7 @@ public class Instructor {
     @Column(length = 100)
     private String especialidad;
     
-    // --- Relación con Usuario ---
-    // Un Instructor también tiene una cuenta de Usuario.
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private User user;
