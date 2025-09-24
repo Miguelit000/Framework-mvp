@@ -1,8 +1,13 @@
 package com.rollerspeed.rollerspeed;
 
+import com.rollerspeed.rollerspeed.models.Alumno;
+import com.rollerspeed.rollerspeed.models.Rol;
 import com.rollerspeed.rollerspeed.models.User;
-import com.rollerspeed.rollerspeed.services.UserService;
+import com.rollerspeed.rollerspeed.repositories.AlumnoRepository;
+import com.rollerspeed.rollerspeed.repositories.RolRepository; // 1. Importar RolRepository
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder; // 2. Importar PasswordEncoder
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +19,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PageController {
 
     @Autowired
-    private UserService userService;
+    private AlumnoRepository alumnoRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RolRepository rolRepository;
+
+
+    // ... (los otros métodos como home(), mision(), etc. se quedan igual)
     @GetMapping("/")
     public String home() {
         return "index";
@@ -50,38 +63,41 @@ public class PageController {
     public String conocenos() {
         return "conocenos";
     }
+    
 
-    // Metodo para mostrar el formulario de registro
+    // 2. Modificamos el método para MOSTRAR el formulario
     @GetMapping("/registro")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
+        // Ahora creamos un Alumno que ya tiene un User adentro
+        Alumno alumno = new Alumno();
+        alumno.setUser(new User()); 
+        model.addAttribute("alumno", alumno);
         return "registro";
     }
 
-    // Metodo para procesar el formulario de registro
+    // 3. Modificamos el método para PROCESAR el formulario
     @PostMapping("/registro")
-    public String processRegistration(@ModelAttribute User user) {
-        userService.savUser(user);
-        return "redirect:/";
+    public String processRegistration(@ModelAttribute Alumno alumno) {
+        
+        // Ciframos la contraseña
+        String contraseñaCifrada = passwordEncoder.encode(alumno.getUser().getPassword());
+        alumno.getUser().setPassword(contraseñaCifrada);
+
+        // Asignamos el rol de "ALUMNO" por defecto
+        Rol rolAlumno = rolRepository.findByNombre("ROLE_ALUMNO");
+        alumno.getUser().setRol(rolAlumno);
+        
+        // Guardamos el alumno (que a su vez guarda el usuario con la contraseña cifrada y el rol)
+        alumnoRepository.save(alumno);
+
+        return "redirect:/login";
     }
 
-    // Metodo para mostrar la pagina de inicio de sesion
+    // El método de login se queda igual por ahora
     @GetMapping("/login")
     public String showLoginPage() {
         return "login";
     }
-
-    // Metodo para procesar el incio de sesion
-    @PostMapping("/login")
-    public String processLogin(@RequestParam String username, @RequestParam String password) {
-        User user = userService.findByUsernameAndPassword(username, password);
-
-        if (user != null) {
-            // Si el usuario existe, redirige a una pagina de bienvenida
-            return "redirect:/bienvenida";
-        } else {
-            // Si el usuario no existe, regresa a la pagina de login con error
-            return "redirect:/login?error=true";
-        }
-    }
+    
+    
 }

@@ -65,26 +65,20 @@
         </div>
 
         <form th:action="@{/login}" method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Nombre de Usuario</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required>
-                </div>
-            </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" id="email" class="form-control" name="email" placeholder="tu@correo.com" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="••••••••" required>
+    </div>
+    <button type="submit" class="btn btn-warning w-100">Iniciar Sesión</button>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
-                </div>
-            </div>
-
-            <div class="d-grid mb-3">
-                <button type="submit" class="btn btn-warning">Entrar</button>
-            </div>
-        </form>
+    <div th:if="${param.error}" class="alert alert-danger mt-3" role="alert">
+        Correo o contraseña incorrectos.
+    </div>
+</form>
 
         <p class="text-center mb-0">
             ¿Aún no tienes una cuenta?

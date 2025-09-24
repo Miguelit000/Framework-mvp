@@ -4,16 +4,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String password;
+    
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "rol_id")
+    private Rol rol; 
 
     // Getters and Setters
     
@@ -23,12 +32,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    
     public String getPassword() {
         return password;
     }
@@ -40,6 +44,12 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public Rol getRol(){
+        return rol;
+    }
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     
