@@ -4,19 +4,19 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "alumnos") 
+@Table(name = "alumnos") // Tabla alumnos
 public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alumno") 
+    @Column(name = "id_alumno") // El nombre en la BD
     private Long idAlumno;
 
     @Column(nullable = false, length = 100)
     private String nombre;
 
     @Column(name = "fecha_nacimiento", nullable = false)
-    private LocalDate fechaNacimiento; 
+    private LocalDate fechaNacimiento; // LocalDate para fechas
 
     @Column(nullable = false, length = 20)
     private String genero;
@@ -24,12 +24,14 @@ public class Alumno {
     @Column(length = 20)
     private String telefono;
     
-    @OneToOne(cascade = CascadeType.ALL) 
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id") 
+    // Relación con Usuario 
+    @OneToOne(cascade = CascadeType.ALL) // Si borramos un alumno, también se borra su usuario.
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id") // conecxion tablas
     private User user;
 
 
     // Constructores, Getters y Setters
+
     public Long getIdAlumno() {
         return idAlumno;
     }

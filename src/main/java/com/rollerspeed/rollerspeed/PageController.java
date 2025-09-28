@@ -4,16 +4,14 @@ import com.rollerspeed.rollerspeed.models.Alumno;
 import com.rollerspeed.rollerspeed.models.Rol;
 import com.rollerspeed.rollerspeed.models.User;
 import com.rollerspeed.rollerspeed.repositories.AlumnoRepository;
-import com.rollerspeed.rollerspeed.repositories.RolRepository; // 1. Importar RolRepository
-
+import com.rollerspeed.rollerspeed.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder; // 2. Importar PasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
@@ -21,12 +19,11 @@ public class PageController {
     @Autowired
     private AlumnoRepository alumnoRepository;
 
-    @Autowired
+    @Autowired 
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RolRepository rolRepository;
-
 
     @GetMapping("/")
     public String home() {
@@ -64,7 +61,7 @@ public class PageController {
     }
     
 
-
+    // Metodo para mostra formulario
     @GetMapping("/registro")
     public String showRegistrationForm(Model model) {
         Alumno alumno = new Alumno();
@@ -73,15 +70,15 @@ public class PageController {
         return "registro";
     }
 
+    // Meotodo para procesar el formulario
     @PostMapping("/registro")
     public String processRegistration(@ModelAttribute Alumno alumno) {
-        
         String contraseñaCifrada = passwordEncoder.encode(alumno.getUser().getPassword());
         alumno.getUser().setPassword(contraseñaCifrada);
 
         Rol rolAlumno = rolRepository.findByNombre("ROLE_ALUMNO");
         alumno.getUser().setRol(rolAlumno);
-        
+
         alumnoRepository.save(alumno);
 
         return "redirect:/login";
@@ -92,5 +89,6 @@ public class PageController {
         return "login";
     }
     
-    
+
+
 }

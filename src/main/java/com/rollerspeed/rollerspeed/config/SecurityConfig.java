@@ -10,36 +10,28 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig {
 
-    @Bean 
+    @Bean
     public PasswordEncoder passwordEncoder() {
-        return new  BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
-     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/login", "/registro", "/css/**", "/js/**", "/images/**", "/servicios", "/mision", "/vision", "/valores", "/eventos", "/conocenos").permitAll()
-            
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-
-                .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-
-                .loginPage("/login")
-                .usernameParameter("email")
-                .defaultSuccessUrl("/bienvenida", true)
-                .permitAll()
-            )
-            .logout(logout -> logout
-                .permitAll()
-            );
-
+        .authorizeHttpRequests(authorize -> authorize
+        .requestMatchers("/","/login","/registro","/css/**","/js/**","/servicios","/mision","/vision","/valores","/eventos","/conocenos").permitAll()
+        .requestMatchers("/admin/**").hasRole("ADMIN")
+        .anyRequest().authenticated()
+        )
+        .formLogin(form -> form
+        .loginPage("/login")
+        .usernameParameter("email")
+        .defaultSuccessUrl("/bienvenida", true)
+        .permitAll()
+        );
         return http.build();
     }
+    
 }
-

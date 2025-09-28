@@ -2,139 +2,37 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link rel="icon" href="/images/logo.png" type="image/png">
-
-    <style>
-        body {
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('/images/fondo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 0;
-        }
-
-        .login-card {
-            max-width: 400px;
-            width: 90%;
-            border-radius: 1rem;
-            box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 1;
-        }
-        .form-control:focus {
-            border-color: #ffc107;
-            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, .25);
-        }
-        .btn-warning {
-            font-weight: bold;
-        }
-        .text-center.mb-4 i {
-            font-size: 3rem;
-            color: #ffc107;
-        }
-    </style>
-</head>
+    </head>
 <body>
-
-    <div class="card p-4 login-card">
-        <div class="text-center mb-4">
-            <img src="/images/logo.png" alt="Logo de Rollerspeed" class="login-logo img-fluid" style="max-width: 80px;">
-            <h3 class="fw-bold">Iniciar Sesión</h3>
-            <p class="text-muted">Bienvenido de nuevo, ingresa tus credenciales</p>
+    <div class="card p-4 p-md-5 login-card">
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Correo o contraseña incorrectos.
         </div>
 
         <form th:action="@{/login}" method="post">
-    <div class="mb-3">
-        <label for="email" class="form-label">Correo Electrónico</label>
-        <input type="email" id="email" class="form-control" name="email" placeholder="tu@correo.com" required>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Contraseña</label>
-        <input type="password" id="password" class="form-control" name="password" placeholder="••••••••" required>
-    </div>
-    <button type="submit" class="btn btn-warning w-100">Iniciar Sesión</button>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
 
-    <div th:if="${param.error}" class="alert alert-danger mt-3" role="alert">
-        Correo o contraseña incorrectos.
-    </div>
-</form>
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-warning">Ingresar</button>
+            </div>
+        </form>
 
         <p class="text-center mb-0">
-            ¿Aún no tienes una cuenta?
+            ¿No tienes una cuenta?
             <a href="/registro" class="text-warning fw-bold">Regístrate aquí</a>
         </p>
     </div>
-
-    <footer class="bg-dark text-white pt-5 pb-4" style="display: none;">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <hr class="border-secondary">
-                </div>
-            </div>
-
-            <div class="row py-4">
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <a href="#" class="d-inline-block mb-3 text-decoration-none">
-                        <span class="bg-light text-dark fs-5 fw-bold rounded px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> rollerspeed</span>
-                    </a>
-                    <p class="text-secondary">© 2025</p>
-                </div>
-
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white"><i class="bi bi-grid me-1"></i> Rollerspeed</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-house-door me-1"></i> Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-stars me-1"></i> Features</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-cash-coin me-1"></i> Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-question-circle me-1"></i> FAQs</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-info-circle me-1"></i> About</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white"><i class="bi bi-share me-1"></i> Síguenos</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-fill me-1"></i> rollerspeed@example.com</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-globe2 me-1"></i> rollerspeed.com</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-white"><i class="bi bi-telephone-forward me-1"></i> Contáctanos</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><a href="mailto:rollerspeed@example.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope-at me-1"></i> rollerspeed@example.com</a></li>
-                        <li class="mb-2"><a href="tel:+573000000000" class="text-secondary text-decoration-none"><i class="bi bi-phone me-1"></i> 300-000-0000</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none"><i class="bi bi-geo-alt me-1"></i> Visítanos en nuestra oficina #123</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
