@@ -14,6 +14,7 @@ import com.rollerspeed.rollerspeed.repositories.InstructorRepository;
 import com.rollerspeed.rollerspeed.repositories.PagoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,9 @@ public class AdminController {
 
     @Autowired
     private PagoRepository pagoRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/instructores")
     public String listarInstructores(Model model) {
@@ -188,6 +192,43 @@ public class AdminController {
     public String eliminarPago(@PathVariable Long id) {
         pagoRepository.deleteById(id);
         return "redirect:/admin/pagos";
+    }
+
+     @GetMapping("/alumnos")
+    public String listarAlumnos(Model model) {
+        List<Alumno> listaAlumnos = alumnoRepository.findAll();
+        model.addAttribute("alumnos", listaAlumnos);
+        return "admin/alumnos";
+    }
+
+    @GetMapping("/alumnos/editar/{id}")
+    public String mostrarFormularioDeEditarAlumno(@PathVariable Long id, Model model) {
+        Alumno alumno = alumnoRepository.findById(id).get();
+        model.addAttribute("alumno", alumno);
+        return "admin/formulario-alumno";
+    }
+
+    @PostMapping("/alumnos/guardar")
+    public String guardarAlumno(@ModelAttribute Alumno alumno, @RequestParam(name = "newPassword", required = false) String newPassword) {
+        Alumno alumnoExistente = alumnoRepository.findById(alumno.getIdAlumno()).get();
+        alumnoExistente.setNombre(alumno.getNombre());
+        alumnoExistente.setFechaNacimiento(alumno.getFechaNacimiento());
+        alumnoExistente.setGenero(alumno.getGenero());
+        alumnoExistente.setTelefono(alumno.getTelefono());
+        alumnoExistente.getUser().setEmail(alumno.getUser().getEmail());
+
+        if (newPassword != null && !newPassword.isEmpty()) {
+            alumnoExistente.getUser().setPassword(passwordEncoder.encode(newPassword));  
+        }
+
+        alumnoRepository.save(alumnoExistente);
+        return "redirect:/admin/alumnos";
+    }
+
+    @GetMapping("alumnos/eliminar/{id}")
+    public String eliminarAlumno(@PathVariable Long id) {
+        alumnoRepository.deleteById(id);
+        return "redirect:/admin/alumnos";
     }
 
 
