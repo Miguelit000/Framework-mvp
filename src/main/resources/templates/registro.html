@@ -2,48 +2,125 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Aspirante</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <style>
+        body {
+            /* Usamos min-height para que el contenido pueda crecer si es necesario */
+            min-height: 100vh; 
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('/images/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1; /* Se ajusta para estar detrás del contenido */
+        }
+
+        .register-card {
+            max-width: 600px; /* Un poco más ancha para el formulario de registro */
+            width: 95%;
+            border-radius: 1rem;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #ffc107;
+            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, .25);
+        }
+        .btn-warning {
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
+
     <div class="card p-4 p-md-5 register-card">
+        <div class="text-center mb-4">
+            <img src="/images/logo.png" alt="Logo de Rollerspeed" class="img-fluid" style="max-width: 80px;">
+            <h3 class="fw-bold">Crear una Cuenta</h3>
+            <p class="text-muted">Ingresa tus datos para registrarte</p>
+        </div>
+
         <form th:action="@{/registro}" th:object="${alumno}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre Completo</label>
-                <input type="text" id="nombre" class="form-control" th:field="*{nombre}" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" id="nombre" class="form-control" th:field="*{nombre}" placeholder="Tu nombre completo" required>
+                </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" id="fechaNacimiento" class="form-control" th:field="*{fechaNacimiento}" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar-event-fill"></i></span>
+                        <input type="date" id="fechaNacimiento" class="form-control" th:field="*{fechaNacimiento}" required>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="genero" class="form-label">Género</label>
-                    <select id="genero" class="form-select" th:field="*{genero}" required>
-                        <option value="" disabled selected>Selecciona...</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                    </select>
+                    <div class="input-group">
+                         <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                        <select id="genero" class="form-select" th:field="*{genero}" required>
+                            <option value="" disabled selected>Selecciona...</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
             <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono</label>
-                <input type="tel" id="telefono" class="form-control" th:field="*{telefono}">
-            </div>
-            <hr>
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" class="form-control" th:field="*{user.email}" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" class="form-control" th:field="*{user.password}" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                    <input type="tel" id="telefono" class="form-control" th:field="*{telefono}" placeholder="Ej: 3001234567">
+                </div>
             </div>
 
-            <div class="d-grid mb-3">
-                <button type="submit" class="btn btn-warning">Registrarme</button>
+            <hr class="my-4">
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" id="email" class="form-control" th:field="*{user.email}" placeholder="tu@correo.com" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                    <input type="password" id="password" class="form-control" th:field="*{user.password}" placeholder="Crea una contraseña segura" required>
+                </div>
+            </div>
+
+            <div class="d-grid my-4">
+                <button type="submit" class="btn btn-warning btn-lg">Registrarme</button>
             </div>
         </form>
 
@@ -52,5 +129,7 @@
             <a href="/login" class="text-warning fw-bold">Inicia sesión aquí</a>
         </p>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
