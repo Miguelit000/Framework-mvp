@@ -70,7 +70,7 @@ public class AdminController {
     @GetMapping("/instructores/nuevo")
     public String mostrarFormularioDeNuevoInstructor(Model model) {
         Instructor instructor = new Instructor();
-         instructor.setUser(new User());
+        instructor.setUser(new User());
         model.addAttribute("instructor", instructor);
         return "admin/formulario-instructor";
     }
